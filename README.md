@@ -14,6 +14,14 @@
 
 ---
 
+## 📸 Tampilan
+
+Halaman masuk — panel fitur di kiri, formulir + akun demo di kanan:
+
+![SalesManager — halaman login](screenshots/login.png)
+
+---
+
 ## ❌ Masalahnya
 
 - Warung & retail kecil masih catat penjualan di **buku tulis** — rekap bulanan ribet, untung/rugi nggak kelihatan
