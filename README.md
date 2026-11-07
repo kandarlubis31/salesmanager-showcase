@@ -60,24 +60,24 @@ Pembayaran via **Midtrans Snap** (VA, QRIS, e-wallet, kartu kredit) + webhook se
 
 ```mermaid
 flowchart TB
- U[" Kasir / Manajer / Admin<br/>PWA + mobile-first UI"]
- subgraph L[" Laravel 12 + Livewire 3"]
- MW["Middleware<br/>Tenant · Role · License · Cache"]
- POS["POS Livewire<br/>cart · barcode · QRIS"]
- CTL["Controllers<br/>products · sales · reports<br/>expenses · exports · upgrade"]
- TL["TenantService + TenantScope<br/>plan limits + feature toggles"]
- LOG["ActivityLogService"]
- end
- DB[(" MySQL<br/>semua tabel ber-filter tenant_id")]
- PAY[" Midtrans Snap<br/>VA · QRIS · e-wallet · CC"]
- SW[" Service Worker<br/>3 caching strategies"]
- U --> MW
- MW --> POS & CTL
- POS & CTL --> TL
- TL & POS & CTL --> DB
- CTL <-->|"create / callback / webhook"| PAY
- SW -.-> U
- LOG --> DB
+    U[" Kasir / Manajer / Admin<br/>PWA + mobile-first UI"]
+    subgraph L[" Laravel 12 + Livewire 3"]
+        MW["Middleware<br/>Tenant · Role · License · Cache"]
+        POS["POS Livewire<br/>cart · barcode · QRIS"]
+        CTL["Controllers<br/>products · sales · reports<br/>expenses · exports · upgrade"]
+        TL["TenantService + TenantScope<br/>plan limits + feature toggles"]
+        LOG["ActivityLogService"]
+    end
+    DB[(" MySQL<br/>semua tabel ber-filter tenant_id")]
+    PAY[" Midtrans Snap<br/>VA · QRIS · e-wallet · CC"]
+    SW[" Service Worker<br/>3 caching strategies"]
+    U --> MW
+    MW --> POS & CTL
+    POS & CTL --> TL
+    TL & POS & CTL --> DB
+    CTL <-->|"create / callback / webhook"| PAY
+    SW -.-> U
+    LOG --> DB
 ```
 
 - **Stack:** Laravel 12 (PHP 8.2+) · Livewire 3 · Tailwind · MySQL · Chart.js · Maatwebsite Excel + DomPDF · Midtrans SDK · QR-code
